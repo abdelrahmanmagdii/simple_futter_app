@@ -16,8 +16,6 @@ jobs:
         with:
           channel: 'dev'
 
-#      - name: get Version
-#        run:  flutter --version
       - name: flutter upgrade
         run: flutter upgrade
       - name: get Version
@@ -42,10 +40,17 @@ jobs:
         with:
           name: web-build
           path: web-build
+#      - name: Deploy to Firebase
+#        uses: w9jds/firebase-action@master
+#        with:
+#          args: deploy --only hosting --public web-build
+#        env:
+#          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+#          PROJECT_ID: default
+
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting --public web-build
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: default
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GITWORKFLOW_3437B }}'
+          projectId: gitworkflow-3437b
