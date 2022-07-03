@@ -15,13 +15,14 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'dev'
-      - run: flutter pub get
-      - name: get Version
-        run:  flutter --version
+
+#      - name: get Version
+#        run:  flutter --version
       - name: flutter upgrade
         run: flutter upgrade
       - name: get Version
         run:  flutter --version
+      - run: flutter pub get
       - run: flutter config --enable-web
       - run: flutter build web
       - name: Archive Production Artifact
