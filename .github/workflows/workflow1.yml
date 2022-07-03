@@ -11,6 +11,8 @@ jobs:
     name: Build Flutter (Web)
     runs-on: ubuntu-latest
     steps:
+      - name: get Version
+        run:  flutter --version
       - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
         with:
